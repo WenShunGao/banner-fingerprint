@@ -1,0 +1,36 @@
+name: banner-fingerprint
+
+services:
+  server:
+    build:
+      context: .
+      target: server
+    ports:
+      - "127.0.0.1:8080:8080"
+    read_only: true
+    user: "65532:65532"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, /server, -health]
+      interval: 3s
+      timeout: 2s
+      retries: 5
+      start_period: 3s
+    networks: [backend]
+  client:
+    build:
+      context: .
+      target: client
+    command: [-file, /app/sample.json, -url, "http://server:8080/fingerprint"]
+    depends_on:
+      server:
+        condition: service_healthy
+    read_only: true
+    user: "65532:65532"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    networks: [backend]
+networks:
+  backend:
+    internal: true

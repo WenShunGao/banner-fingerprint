@@ -1,0 +1,14 @@
+[
+  {"protocol":"SSH","product":"OpenSSH","pattern":"(?i)^SSH-[0-9.]+-OpenSSH[_-](?P<version>[0-9][\\w.p-]*)(?:\\s+(?P<os>Ubuntu|Debian)\\b)?","confidence":0.95},
+  {"protocol":"SSH","product":"","pattern":"^SSH-[0-9.]+-","confidence":0.7},
+  {"protocol":"HTTP","product":"nginx","pattern":"(?im)^Server:\\s*nginx(?:/(?P<version>[\\w.-]+))?(?:\\s+\\((?P<os>Ubuntu|Debian)\\))?","confidence":0.9},
+  {"protocol":"HTTP","product":"Apache","pattern":"(?im)^Server:\\s*Apache(?:/(?P<version>[\\w.-]+))?(?:\\s+\\((?P<os>Ubuntu|Debian)\\))?","confidence":0.9},
+  {"protocol":"HTTP","product":"Jetty","pattern":"(?im)^Server:\\s*Jetty(?:/(?P<version>[\\w.-]+))?","confidence":0.85},
+  {"protocol":"HTTP","product":"Microsoft-IIS","pattern":"(?im)^Server:\\s*Microsoft-IIS(?:/(?P<version>[\\w.-]+))?","confidence":0.9},
+  {"protocol":"HTTP","product":"","pattern":"^HTTP/[0-9.]+\\s+[0-9]{3}\\b","confidence":0.7},
+  {"protocol":"Redis","product":"Redis","pattern":"(?i)^(?:\\+PONG|-NOAUTH Authentication required\\.|-ERR .*\\b(?:redis|command|arguments)\\b)","confidence":0.7},
+  {"protocol":"FTP","product":"ProFTPD","pattern":"(?i)^220[^\\r\\n]*?ProFTPD(?:\\s+(?P<version>[0-9][\\w.-]*))?","confidence":0.9},
+  {"protocol":"FTP","product":"vsFTPd","pattern":"(?i)^220[^\\r\\n]*?vsFTPd(?:\\s+(?P<version>[0-9][\\w.-]*))?","confidence":0.9},
+  {"protocol":"FTP","product":"Pure-FTPd","pattern":"(?i)^220[^\\r\\n]*?Pure-FTPd(?:\\s+(?P<version>[0-9][\\w.-]*))?","confidence":0.85},
+  {"protocol":"FTP","product":"","pattern":"^220[ -]","confidence":0.6}
+]
